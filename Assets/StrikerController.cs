@@ -61,6 +61,6 @@ public class StrikerController : MonoBehaviour
     }
     public void StrikerPos(float value)
     {
-        transform.position = new Vector3(value, -0.9f, 0);
+        transform.position = new Vector3(value, -0.95f, 0);
     }
 }
