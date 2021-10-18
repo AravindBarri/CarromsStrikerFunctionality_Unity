@@ -59,6 +59,13 @@ public class StrikerController : MonoBehaviour
             StrikerBG.localScale = Vector3.zero;
         }
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Puck")
+        {
+            collision.gameObject.GetComponent<Renderer>().material.color = UnityEngine.Random.ColorHSV();
+        }
+    }
     public void StrikerPos(float value)
     {
         transform.position = new Vector3(value, -0.95f, 0);
