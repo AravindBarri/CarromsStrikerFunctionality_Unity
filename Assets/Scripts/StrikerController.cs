@@ -86,7 +86,7 @@ public class StrikerController : MonoBehaviour
             StartCoroutine(ResetPuckColor(collision.gameObject));
             ScoreManager.scoreInstance.BluePuckUpdate();
         }
-        collision.gameObject.SetActive(false);
+        
     }
     public void StrikerPos(float value)
     {
@@ -106,7 +106,8 @@ public class StrikerController : MonoBehaviour
 
     IEnumerator ResetPuckColor(GameObject puckObject)
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(3f);
         puckObject.GetComponent<Renderer>().material.color = Color.white;
+        puckObject.SetActive(false);
     }
 }
