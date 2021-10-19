@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class StrikerController : MonoBehaviour
 {
     [SerializeField] Slider strikerSlider;
@@ -16,12 +17,18 @@ public class StrikerController : MonoBehaviour
 
     [SerializeField]
     Transform ForcePoint;
+
+    [SerializeField]
+    Vector3 initialPointOfStriker;
+
+    [SerializeField]
+    Text resetText;
     // Start is called before the first frame update
     void Start()
     {
         RB = GetComponent<Rigidbody2D>();
         strikerSlider.onValueChanged.AddListener(StrikerPos);
-
+        initialPointOfStriker = this.transform.position;
 
     }
 
@@ -31,6 +38,7 @@ public class StrikerController : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector3.forward);
+            //print(Input.mousePosition);
             if (hit.collider)
             {
                 if(hit.transform.name == "CarromStriker")
@@ -57,17 +65,48 @@ public class StrikerController : MonoBehaviour
             StrikerForce = false;
 
             StrikerBG.localScale = Vector3.zero;
+
+            resetText.text = "Press Space to reset the striker position";
+        }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            StartCoroutine(ResetStrikerPosition());
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Puck")
+        if(collision.gameObject.tag == "RedPuck" )
         {
             collision.gameObject.GetComponent<Renderer>().material.color = UnityEngine.Random.ColorHSV();
+            StartCoroutine(ResetPuckColor(collision.gameObject));
+            ScoreManager.scoreInstance.RedPuckUpdate();
+        }else if(collision.gameObject.tag == "BluePuck")
+        {
+            collision.gameObject.GetComponent<Renderer>().material.color = UnityEngine.Random.ColorHSV();
+            StartCoroutine(ResetPuckColor(collision.gameObject));
+            ScoreManager.scoreInstance.BluePuckUpdate();
         }
+        collision.gameObject.SetActive(false);
     }
     public void StrikerPos(float value)
     {
         transform.position = new Vector3(value, -0.95f, 0);
+        
+    }
+
+
+
+    IEnumerator ResetStrikerPosition()
+    {
+        yield return new WaitForSeconds(1f);
+        this.transform.position = initialPointOfStriker;
+        RB.velocity = Vector3.zero;
+        resetText.text = "";
+    }
+
+    IEnumerator ResetPuckColor(GameObject puckObject)
+    {
+        yield return new WaitForSeconds(1f);
+        puckObject.GetComponent<Renderer>().material.color = Color.white;
     }
 }
