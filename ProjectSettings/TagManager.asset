@@ -6,6 +6,7 @@ TagManager:
   tags:
   - RedPuck
   - BluePuck
+  - Hole
   layers:
   - Default
   - TransparentFX

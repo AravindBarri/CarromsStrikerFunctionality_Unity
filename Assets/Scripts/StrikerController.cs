@@ -106,8 +106,8 @@ public class StrikerController : MonoBehaviour
 
     IEnumerator ResetPuckColor(GameObject puckObject)
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
         puckObject.GetComponent<Renderer>().material.color = Color.white;
-        puckObject.SetActive(false);
+        //puckObject.SetActive(false);
     }
 }
