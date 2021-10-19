@@ -79,14 +79,15 @@ public class StrikerController : MonoBehaviour
         {
             collision.gameObject.GetComponent<Renderer>().material.color = UnityEngine.Random.ColorHSV();
             StartCoroutine(ResetPuckColor(collision.gameObject));
-            ScoreManager.scoreInstance.RedPuckUpdate();
-        }else if(collision.gameObject.tag == "BluePuck")
+            //ScoreManager.scoreInstance.RedPuckUpdate(); //Score update when striker touched the puck
+        }
+        else if(collision.gameObject.tag == "BluePuck")
         {
             collision.gameObject.GetComponent<Renderer>().material.color = UnityEngine.Random.ColorHSV();
             StartCoroutine(ResetPuckColor(collision.gameObject));
-            ScoreManager.scoreInstance.BluePuckUpdate();
+            //ScoreManager.scoreInstance.BluePuckUpdate(); //Score update when striker touched the puck
         }
-        
+
     }
     public void StrikerPos(float value)
     {
