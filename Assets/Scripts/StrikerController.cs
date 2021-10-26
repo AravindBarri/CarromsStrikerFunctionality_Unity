@@ -77,18 +77,23 @@ public class StrikerController : MonoBehaviour
     {
         if(collision.gameObject.tag == "RedPuck" )
         {
-            collision.gameObject.GetComponent<Renderer>().material.color = UnityEngine.Random.ColorHSV();
-            StartCoroutine(ResetPuckColor(collision.gameObject));
+            PuckColliderFunction(collision);
             //ScoreManager.scoreInstance.RedPuckUpdate(); //Score update when striker touched the puck
         }
         else if(collision.gameObject.tag == "BluePuck")
         {
-            collision.gameObject.GetComponent<Renderer>().material.color = UnityEngine.Random.ColorHSV();
-            StartCoroutine(ResetPuckColor(collision.gameObject));
+            PuckColliderFunction(collision);
             //ScoreManager.scoreInstance.BluePuckUpdate(); //Score update when striker touched the puck
         }
 
     }
+
+    private void PuckColliderFunction(Collision2D collision)
+    {
+        collision.gameObject.GetComponent<Renderer>().material.color = UnityEngine.Random.ColorHSV();
+        StartCoroutine(ResetPuckColor(collision.gameObject));
+    }
+
     public void StrikerPos(float value)
     {
         transform.position = new Vector3(value, -0.95f, 0);
@@ -107,7 +112,7 @@ public class StrikerController : MonoBehaviour
 
     IEnumerator ResetPuckColor(GameObject puckObject)
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         puckObject.GetComponent<Renderer>().material.color = Color.white;
         //puckObject.SetActive(false);
     }
