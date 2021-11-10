@@ -2465,6 +2465,22 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3875009133436826421, guid: f4d16856924cf2b4daebdefe76400bd8, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3875009133436826421, guid: f4d16856924cf2b4daebdefe76400bd8, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[3].y
+      value: -0.36170074
+      objectReference: {fileID: 0}
+    - target: {fileID: 3875009133436826421, guid: f4d16856924cf2b4daebdefe76400bd8, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[4].x
+      value: 6.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3875009133436826421, guid: f4d16856924cf2b4daebdefe76400bd8, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[4].y
+      value: 6.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6205329172105848889, guid: f4d16856924cf2b4daebdefe76400bd8, type: 3}
       propertyPath: m_TagString
       value: Hole
